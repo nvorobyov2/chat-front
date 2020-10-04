@@ -11,8 +11,7 @@ async function vk () {
     const data = await bridge.send('VKWebAppGetEmail');
    
     // Handling received data
-    console.log(data);
-    console.log('data');
+    alert(data);
   } catch (error) {
     // Handling an error
   }
