@@ -8,10 +8,10 @@ async function vk () {
   bridge.send('VKWebAppInit');
  
   try {
-    const data = await bridge.send('VKWebAppGetEmail');
+    const data = await bridge.send('VKWebAppGetUserInfo');
    
     // Handling received data
-    alert(data);
+    console.log(data);
   } catch (error) {
     // Handling an error
   }
