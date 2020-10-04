@@ -1,24 +1,31 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import io from 'socket.io-client';
 
 function App() {
+
+  const socket = io("https://chat2222.herokuapp.com/");
+
+  function Message() {
+    const text = document.getElementById("text").value;
+
+    socket.emit('message', {msg: text});
+  }
+
+  socket.on('message', function (data) {
+    const p = document.createElement('p');  
+    p.textContent = data.msg;
+    document.getElementById('chat').appendChild(p);
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="wrapper">
+      <div id="chat"></div>
+      <div id="button">
+        <input id="text" type="input" />
+        <button onClick={Message}>Отправить</button>
+      </div>
     </div>
   );
 }
