@@ -2,9 +2,24 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import io from 'socket.io-client';
+import bridge from '@vkontakte/vk-bridge';
+
+async function vk () {
+  bridge.send('VKWebAppInit');
+ 
+  try {
+    const data = await bridge.send('VKWebAppGetEmail');
+   
+    // Handling received data
+    console.log(data);
+    console.log('data');
+  } catch (error) {
+    // Handling an error
+  }
+}
 
 function App() {
-
+  vk();
   const socket = io("https://chat2222.herokuapp.com/");
 
   function Message() {
