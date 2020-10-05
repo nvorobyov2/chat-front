@@ -6,10 +6,12 @@ import bridge from '@vkontakte/vk-bridge';
 
 class App extends React.Component{
 
-  constructor() {
-    const socket = io("https://chat2222.herokuapp.com/");
+  socket;
 
-    socket.on('message', function (data) {
+  constructor() {
+    this.socket = io("https://chat2222.herokuapp.com/");
+
+    this.socket.on('message', function (data) {
       const p = document.createElement('p');  
       p.textContent = data.msg;
       document.getElementById('chat').appendChild(p);
@@ -18,7 +20,7 @@ class App extends React.Component{
 
   message() {
     const text = document.getElementById("text").value;
-    socket.emit('message', {msg: text});
+    this.socket.emit('message', {msg: text});
   }
 
   async vk() {
