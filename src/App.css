@@ -1,13 +1,13 @@
 .wrapper{
   margin-top: 20px;
   position: absolute;
-  left: 25%;
-  width: 300px;
+  left: 15%;
+  width: 100%;
 }
 
 #chat{
   border: 1px solid black;
-  width: 600px;
+  width: 70%;
   height: 400px;
 }
 
@@ -17,15 +17,15 @@
 
 #button{
   margin-top: 10px;
-  width: 600px;
+  width: 70%;
   height: 70px;
 }
 
 #button input{
-  width: 475px;
+  width: 75%;
   margin-right: 15px;
 }
 
 #button button{
-width: 100px;
+width: 20%;
 }

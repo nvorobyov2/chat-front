@@ -23,7 +23,7 @@ function App() {
     bridge.send('VKWebAppInit');
  
     try {
-      const data = await new Promise(bridge.send('VKWebAppGetUserInfo'));
+      const data = await bridge.send('VKWebAppGetUserInfo');
       return data;
     } catch (error) {
 
