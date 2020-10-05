@@ -5,7 +5,9 @@ import bridge from '@vkontakte/vk-bridge';
 
 export default class App extends React.Component{
 
-  constructor() {
+  constructor(props) {
+    super(props);
+    
     const socket = io("https://chat2222.herokuapp.com/");
 
     socket.on('message', function (data) {
