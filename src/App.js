@@ -14,7 +14,8 @@ function App() {
   });
 
   function message() {
-    const text = document.getElementById("text").value;
+    let text = document.getElementById("text").value;
+    text = time + userName + ' ' + text;
     socket.emit('message', {msg: text});
   }
 
@@ -22,23 +23,35 @@ function App() {
     bridge.send('VKWebAppInit');
  
     try {
-      const data = await bridge.send('VKWebAppGetUserInfo');
-      const userName = data.first_name + ' ' + data.last_name;
-      return userName;
+      const data = await new Promise(bridge.send('VKWebAppGetUserInfo'));
+      return data;
     } catch (error) {
 
     }
   };
 
-  getInfo().then(result => console.log(result));
+  const userName = getInfo().then(result => {
+    console.log(result.first_name + ' ' + result.last_name);
+    const userName = '[' + result.first_name + ' ' + result.last_name + ']';
+    return userName; 
+  });
+
+  let date = new Date();
+  const time = date.getHours() + ':' + date.getMinutes();
   
+  function onSubmit(e) {
+    e.preventDefault();
+    message();
+    document.getElementById('text').value = '';
+  }
+
   return (
     <div className="wrapper">
       <div id="chat"></div>
-      <div id="button">
+      <form onSubmit={onSubmit} id="button">
         <input id="text" type="input" />
-        <button onClick={message}>Отправить</button>
-      </div>
+        <button type="submit">Отправить</button>
+      </form>
     </div>
   );
 }

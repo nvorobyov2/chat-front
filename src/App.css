@@ -1,24 +1,28 @@
 .wrapper{
   margin-top: 20px;
   position: absolute;
-  left: 35%;
+  left: 25%;
   width: 300px;
 }
 
 #chat{
   border: 1px solid black;
-  width: 300px;
+  width: 600px;
   height: 400px;
+}
+
+#chat p{
+  margin: 1px;
 }
 
 #button{
   margin-top: 10px;
-  width: 300px;
+  width: 600px;
   height: 70px;
 }
 
 #button input{
-  width: 175px;
+  width: 475px;
   margin-right: 15px;
 }
 
