@@ -5,8 +5,9 @@ import bridge from '@vkontakte/vk-bridge';
 
 export default class App extends React.Component{
 
-  constructor(props) {
-    super(props);
+
+
+  InitIO() {
 
     this.socket = io("https://chat2222.herokuapp.com/");
 
@@ -34,6 +35,8 @@ export default class App extends React.Component{
   }
 
   render() {
+    this.InitIO();
+
     return (
       <div className="wrapper">
         <div id="chat"></div>
