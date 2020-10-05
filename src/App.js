@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import io from 'socket.io-client';
 import bridge from '@vkontakte/vk-bridge';
@@ -35,7 +34,6 @@ class App extends React.Component{
   }
 
   render() {
-    this.vk();
     return (
       <div className="wrapper">
         <div id="chat"></div>
