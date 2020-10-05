@@ -30,12 +30,12 @@ function App() {
         userName: userName,
       }
     });
-  });
 
-  socket.on('message', function (data) {
-    const p = document.createElement('p');  
-    p.textContent = data.msg;
-    document.getElementById('chat').appendChild(p);
+    socket.on('message', function (data) {
+      const p = document.createElement('p');  
+      p.textContent = data.msg;
+      document.getElementById('chat').appendChild(p);
+    });
   });
 
   function message() {
