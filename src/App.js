@@ -23,17 +23,14 @@ function App() {
  
     try {
       const data = await bridge.send('VKWebAppGetUserInfo');
-      console.log(data);
-      return data;
+      userName = data.first_name + ' ' + data.last_name;
+      return userName;
     } catch (error) {
 
     }
   };
 
-  let data = await getInfo();
-  console.log(data.first_name);
-  console.log(data.last_name);
-
+  console.log(getInfo());
   
   return (
     <div className="wrapper">
