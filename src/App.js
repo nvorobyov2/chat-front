@@ -18,18 +18,22 @@ function App() {
     socket.emit('message', {msg: text});
   }
 
-  async function vk() {
+  async function getInfo() {
     bridge.send('VKWebAppInit');
  
     try {
       const data = await bridge.send('VKWebAppGetUserInfo');
       console.log(data);
+      return data;
     } catch (error) {
 
     }
   };
 
-  vk();
+  const data = getInfo();
+  console.log(data.first_name);
+  console.log(data.last_name);
+
   
   return (
     <div className="wrapper">
