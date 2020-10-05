@@ -5,7 +5,31 @@ import bridge from '@vkontakte/vk-bridge';
 
 function App() {
 
-  const socket = io("https://chat2222.herokuapp.com/");
+  let userName;
+  let date = new Date();
+  const time = date.getHours() + ':' + date.getMinutes();
+
+  async function getInfo() {
+    bridge.send('VKWebAppInit');
+ 
+    try {
+      const data = await bridge.send('VKWebAppGetUserInfo');
+      return data;
+    } catch (error) {
+
+    }
+  };
+  
+  getInfo().then(result => {
+    userName = '[' + result.first_name + ' ' + result.last_name + ']'; 
+  });
+
+
+  const socket = io("https://chat2222.herokuapp.com/", {
+    query: {
+      userName: userName
+    }
+  });
 
   socket.on('message', function (data) {
     const p = document.createElement('p');  
@@ -18,27 +42,6 @@ function App() {
     text = time + userName + ' ' + text;
     socket.emit('message', {msg: text});
   }
-
-  async function getInfo() {
-    bridge.send('VKWebAppInit');
- 
-    try {
-      const data = await bridge.send('VKWebAppGetUserInfo');
-      return data;
-    } catch (error) {
-
-    }
-  };
-
-  let userName;
-  
-  getInfo().then(result => {
-    console.log(result.first_name + ' ' + result.last_name);
-    userName = '[' + result.first_name + ' ' + result.last_name + ']'; 
-  });
-
-  let date = new Date();
-  const time = date.getHours() + ':' + date.getMinutes();
   
   function onSubmit(e) {
     e.preventDefault();
