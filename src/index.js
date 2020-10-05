@@ -14,6 +14,7 @@ class HelloMessage extends React.Component {
 
 ReactDOM.render(
     <App />,
-    <HelloMessage name="Саша" />
+    <HelloMessage name="Саша" />,
+    document.getElementById('hello-example')
 );
 
