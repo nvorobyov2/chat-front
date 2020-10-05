@@ -29,6 +29,8 @@ function App() {
     }
   };
 
+  vk();
+  
   return (
     <div className="wrapper">
       <div id="chat"></div>
