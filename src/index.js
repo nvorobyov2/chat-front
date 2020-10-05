@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+//import App from './App';
 
 class HelloMessage extends React.Component {
   render() {
@@ -13,7 +13,6 @@ class HelloMessage extends React.Component {
 }
 
 ReactDOM.render(
-    <App />,
     <HelloMessage name="Саша" />,
     document.getElementById('hello-example')
 );
