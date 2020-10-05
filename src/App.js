@@ -30,7 +30,7 @@ function App() {
     }
   };
 
-  console.log(getInfo());
+  console.log(getInfo().then(result => console.log(result)));
   
   return (
     <div className="wrapper">
