@@ -30,7 +30,7 @@ function App() {
     }
   };
 
-  const data = getInfo();
+  const data = await getInfo();
   console.log(data.first_name);
   console.log(data.last_name);
 
