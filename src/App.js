@@ -21,20 +21,19 @@ function App() {
   };
   
   getInfo().then(result => {
-    userName = '[' + result.first_name + ' ' + result.last_name + ']'; 
-  });
+    userName = '[' + result.first_name + ' ' + result.last_name + ']';
 
+    const socket = io("https://chat2222.herokuapp.com/", {
+      query: {
+        userName: userName,
+      }
+    });
 
-  const socket = io("https://chat2222.herokuapp.com/", {
-    query: {
-      userName: userName
-    }
-  });
-
-  socket.on('message', function (data) {
-    const p = document.createElement('p');  
-    p.textContent = data.msg;
-    document.getElementById('chat').appendChild(p);
+    socket.on('message', function (data) {
+      const p = document.createElement('p');  
+      p.textContent = data.msg;
+      document.getElementById('chat').appendChild(p);
+    });
   });
 
   function message() {
