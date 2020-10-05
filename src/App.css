@@ -1,13 +1,13 @@
 .wrapper{
   margin-top: 20px;
   position: absolute;
-  left: 15%;
+  left: 20%;
   width: 100%;
 }
 
 #chat{
   border: 1px solid black;
-  width: 70%;
+  width: 60%;
   height: 400px;
 }
 

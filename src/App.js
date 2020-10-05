@@ -30,10 +30,11 @@ function App() {
     }
   };
 
-  const userName = getInfo().then(result => {
+  let userName;
+  
+  getInfo().then(result => {
     console.log(result.first_name + ' ' + result.last_name);
-    const userName = '[' + result.first_name + ' ' + result.last_name + ']';
-    return userName; 
+    userName = '[' + result.first_name + ' ' + result.last_name + ']'; 
   });
 
   let date = new Date();
