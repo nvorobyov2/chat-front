@@ -3,27 +3,22 @@ import './App.css';
 import io from 'socket.io-client';
 import bridge from '@vkontakte/vk-bridge';
 
-export default class App extends React.Component{
+function App() {
 
+  const socket = io("https://chat2222.herokuapp.com/");
 
+  socket.on('message', function (data) {
+    const p = document.createElement('p');  
+    p.textContent = data.msg;
+    document.getElementById('chat').appendChild(p);
+  });
 
-  InitIO() {
-
-    this.socket = io("https://chat2222.herokuapp.com/");
-
-    this.socket.on('message', function (data) {
-      const p = document.createElement('p');  
-      p.textContent = data.msg;
-      document.getElementById('chat').appendChild(p);
-    });
-  }
-
-  message() {
+  function message() {
     const text = document.getElementById("text").value;
-    this.socket.emit('message', {msg: text});
+    socket.emit('message', {msg: text});
   }
 
-  async vk() {
+  async function vk() {
     bridge.send('VKWebAppInit');
  
     try {
@@ -32,19 +27,17 @@ export default class App extends React.Component{
     } catch (error) {
 
     }
-  }
+  };
 
-  render() {
-    this.InitIO();
-
-    return (
-      <div className="wrapper">
-        <div id="chat"></div>
-        <div id="button">
-          <input id="text" type="input" />
-          <button onClick={this.message}>Отправить</button>
-        </div>
+  return (
+    <div className="wrapper">
+      <div id="chat"></div>
+      <div id="button">
+        <input id="text" type="input" />
+        <button onClick={message}>Отправить</button>
       </div>
-    );
-  }
+    </div>
+  );
 }
+
+export default App;
