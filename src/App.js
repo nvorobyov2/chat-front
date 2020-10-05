@@ -4,7 +4,6 @@ import io from 'socket.io-client';
 import bridge from '@vkontakte/vk-bridge';
 
 class App extends React.Component{
-  socket;
 
   constructor() {
     this.socket = io("https://chat2222.herokuapp.com/");
