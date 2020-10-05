@@ -42,7 +42,7 @@ class App extends React.Component{
           <button onClick={this.message}>Отправить</button>
         </div>
       </div>
-    )
+    );
   }
 }
 
