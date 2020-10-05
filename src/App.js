@@ -4,7 +4,6 @@ import io from 'socket.io-client';
 import bridge from '@vkontakte/vk-bridge';
 
 class App extends React.Component{
-  /*
   socket;
 
   constructor() {
@@ -32,7 +31,7 @@ class App extends React.Component{
 
     }
   }
-  */
+
   render() {
     return (
       <div className="wrapper">
