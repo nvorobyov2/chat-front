@@ -3,7 +3,7 @@ import './App.css';
 import io from 'socket.io-client';
 import bridge from '@vkontakte/vk-bridge';
 
-class App extends React.Component{
+export default class App extends React.Component{
 
   constructor() {
     this.socket = io("https://chat2222.herokuapp.com/");
@@ -15,6 +15,7 @@ class App extends React.Component{
     });
   }
 
+  /*
   message() {
     const text = document.getElementById("text").value;
     this.socket.emit('message', {msg: text});
@@ -29,7 +30,7 @@ class App extends React.Component{
     } catch (error) {
 
     }
-  }
+  }*/
 
   render() {
     return (
@@ -43,5 +44,3 @@ class App extends React.Component{
     );
   }
 }
-
-export default App;
