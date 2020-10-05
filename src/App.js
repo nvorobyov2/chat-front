@@ -23,7 +23,7 @@ function App() {
  
     try {
       const data = await bridge.send('VKWebAppGetUserInfo');
-      userName = data.first_name + ' ' + data.last_name;
+      const userName = data.first_name + ' ' + data.last_name;
       return userName;
     } catch (error) {
 
